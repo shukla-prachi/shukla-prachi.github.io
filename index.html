@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prachi Shukla | PhD Candidate, Duke University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1c1c1a;
+      --muted: #5e5e56;
+      --faint: #e6e3db;
+      --accent: #7a5c3a;
+      --accent-light: #f0ebe3;
+      --bg: #f6f4ef;
+      --white: #fdfcf9;
+      --serif: 'Libre Baskerville', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 3rem;
+      background: rgba(246, 244, 239, 0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--faint);
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 0; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active { color: var(--accent); font-weight: 500; }
+
+    /* ── PAGE SYSTEM ── */
+    main { padding-top: 68px; }
+
+    .page {
+      display: none;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      animation: fadein 0.25s ease;
+    }
+    .page.active { display: block; }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SHARED TYPOGRAPHY ── */
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.65rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--faint);
+      font-weight: 400;
+    }
+
+    h2.sub { margin-top: 3.5rem; }
+
+    /* ── HERO ── */
+    #home {
+      display: grid;
+      grid-template-columns: 1fr 190px;
+      gap: 4rem;
+      align-items: start;
+      padding-top: 5.5rem;
+    }
+
+    .hero-text h1 {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      line-height: 1.15;
+      margin-bottom: 0.3rem;
+      font-weight: 400;
+    }
+
+    .hero-subtitle {
+      color: var(--accent);
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+      font-weight: 500;
+    }
+
+    .hero-bio {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.9rem;
+      line-height: 1.75;
+    }
+
+    .fields-row {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-top: 1.4rem;
+    }
+    .field-pill {
+      font-size: 0.74rem;
+      padding: 0.25rem 0.75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      letter-spacing: 0.03em;
+    }
+
+    .hero-links { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.8rem; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      transition: all 0.18s;
+      cursor: pointer;
+    }
+    .btn:hover { background: var(--ink); color: var(--white); }
+    .btn.filled { background: var(--ink); color: var(--white); }
+    .btn.filled:hover { background: var(--accent); border-color: var(--accent); }
+
+    .photo-box {
+      width: 190px; height: 220px;
+      background: var(--faint);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 0.72rem; letter-spacing: 0.05em;
+      text-align: center; padding: 1rem; flex-shrink: 0;
+    }
+
+    /* ── PAPER CARDS ── */
+    .paper-list { list-style: none; display: flex; flex-direction: column; gap: 1.6rem; }
+
+    .paper {
+      padding: 1.4rem 1.5rem;
+      background: var(--white);
+      border-left: 3px solid var(--faint);
+      transition: border-color 0.2s;
+    }
+    .paper:hover { border-left-color: var(--accent); }
+
+    .paper-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      line-height: 1.45;
+      font-weight: 400;
+    }
+    .paper-title a { color: var(--ink); text-decoration: none; }
+    .paper-title a:hover { color: var(--accent); text-decoration: underline; }
+
+    .paper-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+      line-height: 1.5;
+    }
+
+    .abstract-toggle {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--sans); font-size: 0.76rem;
+      color: var(--accent); letter-spacing: 0.05em;
+      text-transform: uppercase; padding: 0;
+      margin-top: 0.6rem; display: block;
+    }
+    .abstract-toggle:hover { text-decoration: underline; }
+
+    .abstract-body {
+      margin-top: 0.8rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+      display: none;
+    }
+    .abstract-body.open { display: block; }
+
+    /* ── TEACHING ── */
+    .course-list { list-style: none; }
+    .course {
+      display: flex; justify-content: space-between; align-items: baseline;
+      flex-wrap: wrap; gap: 0.4rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--faint);
+      font-size: 0.9rem;
+    }
+    .course-name { font-family: var(--serif); font-weight: 400; }
+    .course-role {
+      font-size: 0.76rem; color: var(--accent);
+      font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .course-info { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── CONTACT (on home page) ── */
+    .contact-row {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+      margin-top: 0.4rem;
+    }
+    .contact-row a, .contact-row span {
+      font-size: 0.88rem; color: var(--muted); text-decoration: none;
+    }
+    .contact-row a:hover { color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.76rem;
+      color: var(--muted);
+      border-top: 1px solid var(--faint);
+      margin-top: 2rem;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      #home { grid-template-columns: 1fr; gap: 2rem; }
+      .photo-box { width: 140px; height: 165px; }
+      nav { padding: 1rem 1rem; }
+      .nav-links a { padding: 0.4rem 0.6rem; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-name" onclick="showPage('home', this); return false;">Prachi Shukla</a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('home', this); return false;" class="active" data-page="home">About</a></li>
+      <li><a href="#" onclick="showPage('research', this); return false;" data-page="research">Research</a></li>
+      <li><a href="#" onclick="showPage('teaching', this); return false;" data-page="teaching">Teaching</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ── ABOUT PAGE ── -->
+    <div class="page active" id="page-home">
+      <div id="home">
+        <div class="hero-text">
+          <div class="section-label">PhD Candidate · Public Policy (Economics Concentration)</div>
+          <h1>Prachi Shukla</h1>
+          <p class="hero-subtitle">Duke University · Sanford School of Public Policy</p>
+          <p class="hero-bio">
+            I'm a rising 5th year PhD candidate studying development, labour, and gender.
+            I'm particularly interested in families' decisions around childhood investments
+            and intra-household bargaining. My current work examines how families are
+            affected by policies such as alcohol regulation, inheritance laws, and rural
+            school construction.
+          </p>
+          <p class="hero-bio">
+            Prior to Duke, I worked as a Consultant at the World Bank (DIME) and as a Research
+            Associate at J-PAL. I hold an MSc from the London School of Economics and a BA
+            from St Xavier's College, Mumbai.
+          </p>
+          <div class="fields-row">
+            <span class="field-pill">Development Economics</span>
+            <span class="field-pill">Labour</span>
+            <span class="field-pill">Gender</span>
+            <span class="field-pill">Intra-Household Bargaining</span>
+            <span class="field-pill">India</span>
+          </div>
+          <div class="hero-links">
+            <a href="cv.pdf" class="btn filled">Download CV</a>
+            <a href="mailto:prachi.shukla@duke.edu" class="btn">Email</a>
+          </div>
+        </div>
+        <div class="photo-box">[ photo ]</div>
+      </div>
+    </div>
+
+    <!-- ── RESEARCH PAGE ── -->
+    <div class="page" id="page-research">
+
+      <div class="section-label">Research</div>
+      <h2>Working Papers</h2>
+      <ul class="paper-list">
+
+        <li class="paper">
+          <div class="paper-title">
+            Heterogeneous Receipt of Social Assistance Programs Among Families with Low Income in the U.S.: The Role of State Policy Design
+          </div>
+          <div class="paper-meta">With Lisa Gennetian, Marcos Rangel, Dana Thomson, Luis Basurto, Haocheng Yong</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract ↓</button>
+          <div class="abstract-body">
+            Social assistance programs in the U.S. have made progress toward reducing child poverty, yet millions of households with children do not receive benefits as intended. We posit that households with children face heterogeneous costs—financial, cognitive, time, and information-based—in benefit eligibility, enrollment, and receipt which originate in features of state policy design and that household costs vary by ethnicity. We document substantial variation in social assistance benefit receipt rates across states that cannot be fully attributed to rates of poverty along the same geographic dimensions, with the most striking results for cash assistance receipt among Latino child households. Using microdata from the Current Population Survey, we show how features of state policies, constructed as indices informed by theories of cost minimization and administrative burden, predict rates of cash assistance among households with children after conditioning on their poverty status and demographics, in larger magnitudes among Latino families. Similar effects are not found among non-Latino families, nor for other in-kind programs such as the Supplemental Nutrition Assistance Program. Findings are robust to alternative measures of benefit receipt using Transfer Income Models (i.e., TRIM3) simulations and when generating estimates with data from the Survey of Income and Program Participation.
+          </div>
+        </li>
+
+        <li class="paper">
+          <div class="paper-title">
+            De Jure Policy Design and De Facto Implementation of Cash Assistance Programs: Evidence of Differential Receipt among Latino Families
+          </div>
+          <div class="paper-meta">With Lisa Gennetian, Marcos Rangel, Dana Thomson, Christina Padilla, Luis Basurto</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract ↓</button>
+          <div class="abstract-body">
+            Economic evaluations of the receipt of social assistance programs typically focus on the effect of de jure program design (policy intent). With novel survey data from practitioners across 11 U.S. states, this study offers a first combined look at de jure and de facto implementation features of basic cash assistance programs. We pay particular attention to the differential influence those have among Latino families with children, the largest group residing in poverty but yet receiving social assistance at lower rates than peers. We find that both de jure policies and de facto implementation practices that minimize operational costs—as posited by economic theories of resource allocation—reduce cash assistance receipt rates across all households with children. De jure policies that increase administrative burden also reduce cash assistance receipt but less precisely than policies that minimize operational costs; collectively de facto practices have a larger impact on cash assistance receipt rates than de jure policies. Reductions on cash assistance receipt in response to de jure policies and de facto practices that minimize operational costs are largest among Latino households with children; de facto practices that increase administrative burden on the other hand have the largest effects among non-Latino households. Findings are robust to controls for family, household, and state-level characteristics.
+          </div>
+        </li>
+
+      </ul>
+
+      <h2 class="sub">Works in Progress</h2>
+      <ul class="paper-list">
+
+        <li class="paper">
+          <div class="paper-title">Alcohol Access and Household Welfare: Evidence from India's Highway Liquor Ban</div>
+          <div class="paper-meta">Single-authored</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract ↓</button>
+          <div class="abstract-body">
+            How do households respond to large regulatory shocks that alter access to temptation goods?
+            This paper studies India's 2017 highway liquor ban, which prohibited liquor outlets within
+            a fixed distance of national and state highways. I construct treatment intensity using spatial
+            data and combine it with monthly household expenditure data and health outcomes. I find that
+            more exposed households reduce liquor purchases and alcohol expenditure share after the ban,
+            with no corresponding change in total expenditure or total income. I also find significant
+            declines in spending on other temptation goods, including tobacco and snack foods. Despite
+            these reductions in alcohol spending and a significant increase in female labour force
+            participation, reported intimate partner violence increases, particularly among poorer and
+            rural households.
+          </div>
+        </li>
+
+        <li class="paper">
+          <div class="paper-title">Primary School Expansion and Girls' Life Trajectories: Long-Run Evidence from India</div>
+          <div class="paper-meta">Single-authored</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract ↓</button>
+          <div class="abstract-body">
+            I study the long-run impacts of India's District Primary Education Programme (DPEP)—the
+            world's largest school expansion initiative, launched in the 1990s. Using a district-by-cohort
+            difference-in-differences design, I estimate both direct and indirect effects on educational
+            attainment, marriage, fertility, and social connections. I find substantial and persistent
+            gains in schooling among girls, as well as delayed marriage, lower fertility, and stronger
+            natal family linkages.
+          </div>
+        </li>
+
+        <li class="paper">
+          <div class="paper-title">Impact of Inheritance Laws on Marriage Markets and Education Investment in India</div>
+          <div class="paper-meta">Single-authored</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract ↓</button>
+          <div class="abstract-body">
+            I study the effects of amendments to the Hindu Succession Act that granted women equal
+            inheritance rights to ancestral property. Using a difference-in-differences approach that
+            exploits staggered state-level reforms and legal exclusions for minorities, I find that
+            families respond through compensatory investments: girls with brothers receive more schooling
+            and lower dowries, while boys without sisters gain both in education and marriage market
+            premiums.
+          </div>
+        </li>
+
+      </ul>
+
+      <h2 class="sub">Published Work</h2>
+      <ul class="paper-list">
+
+        <li class="paper">
+          <div class="paper-title">The Crisis Behind Closed Doors: Domestic Workers' Struggles During the Pandemic and Beyond</div>
+          <div class="paper-meta">Shukla, P. &amp; Srivastava, P. (2021) · <em>Economic &amp; Political Weekly</em></div>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- ── TEACHING PAGE ── -->
+    <div class="page" id="page-teaching">
+      <div class="section-label">Teaching</div>
+      <h2>Teaching Experience</h2>
+      <ul class="course-list">
+        <li class="course">
+          <span class="course-name">PUBPOL 402 / ECON 308 — Empirical Methods for Social Progress</span>
+          <span>
+            <span class="course-role">TA</span>
+            <span class="course-info"> · Prof Lisa Gennetian · Spring 2026</span>
+          </span>
+        </li>
+        <li class="course">
+          <span class="course-name">PUBPOL 810 — Microeconomics and Public Policy-Making</span>
+          <span>
+            <span class="course-role">TA</span>
+            <span class="course-info"> · Dr Matthew Johnson · Fall 2025</span>
+          </span>
+        </li>
+        <li class="course">
+          <span class="course-name">Math Camp — Economics &amp; Mathematics for Incoming MPP Students</span>
+          <span>
+            <span class="course-role">TA</span>
+            <span class="course-info"> · Fall 2025</span>
+          </span>
+        </li>
+        <li class="course">
+          <span class="course-name">PUBPOL 303 — Microeconomic Policy Tools</span>
+          <span>
+            <span class="course-role">Head TA</span>
+            <span class="course-info"> · Prof Lisa Gennetian · Spring 2024</span>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2025 Prachi Shukla &nbsp;·&nbsp; Last updated May 2025
+  </footer>
+
+  <script>
+    function showPage(name, clickedLink) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      // Show target
+      document.getElementById('page-' + name).classList.add('active');
+      // Update nav active state
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      if (clickedLink && clickedLink.dataset && clickedLink.dataset.page) {
+        clickedLink.classList.add('active');
+      } else {
+        // Clicked the name logo — activate "About"
+        document.querySelector('[data-page="home"]').classList.add('active');
+      }
+    }
+
+    function toggleAbstract(btn) {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.toggle('open');
+      btn.textContent = isOpen ? 'Abstract ↑' : 'Abstract ↓';
+    }
+  </script>
+
+</body>
+</html>
