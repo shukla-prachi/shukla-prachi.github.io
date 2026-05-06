@@ -167,10 +167,14 @@
 
     .photo-box {
       width: 190px; height: 220px;
-      background: var(--faint);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); font-size: 0.72rem; letter-spacing: 0.05em;
-      text-align: center; padding: 1rem; flex-shrink: 0;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .photo-box img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
 
     /* ── PAPER CARDS ── */
@@ -308,7 +312,7 @@
             <a href="mailto:prachi.shukla@duke.edu" class="btn">Email</a>
           </div>
         </div>
-        <div class="photo-box">[ photo ]</div>
+        <div class="photo-box"><img src="photo.jpg" alt="Prachi Shukla"></div>
       </div>
     </div>
 
