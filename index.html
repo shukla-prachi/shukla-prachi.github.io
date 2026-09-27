@@ -409,41 +409,102 @@
       </ul>
     </div>
 
-    <!-- ── TEACHING PAGE ── -->
-    <div class="page" id="page-teaching">
-      <div class="section-label">Teaching</div>
-      <h2>Teaching Experience</h2>
-      <ul class="course-list">
-        <li class="course">
-          <span class="course-name">PUBPOL 402 / ECON 308 — Empirical Methods for Social Progress</span>
-          <span>
-            <span class="course-role">Co-Instructor</span>
-            <span class="course-info"> · Prof Lisa Gennetian · Spring 2026</span>
-          </span>
-        </li>
-        <li class="course">
-          <span class="course-name">PUBPOL 810 — Microeconomics and Public Policy-Making</span>
-          <span>
-            <span class="course-role">TA</span>
-            <span class="course-info"> · Dr Matthew Johnson · Fall 2025</span>
-          </span>
-        </li>
-        <li class="course">
-          <span class="course-name">Math Camp — Economics &amp; Mathematics for Incoming MPP Students</span>
-          <span>
-            <span class="course-role">TA</span>
-            <span class="course-info"> · Fall 2025, 2026</span>
-          </span>
-        </li>
-        <li class="course">
-          <span class="course-name">PUBPOL 303 — Microeconomic Policy Tools</span>
-          <span>
-            <span class="course-role">Head TA</span>
-            <span class="course-info"> · Prof Lisa Gennetian · Spring 2024</span>
-          </span>
-        </li>
-      </ul>
+<!-- ── TEACHING PAGE ── -->
+<div class="page" id="page-teaching">
+
+  <div class="section-label">Teaching</div>
+
+  <h2>Teaching Experience</h2>
+
+  <ul class="course-list">
+
+    <li class="course">
+      <span class="course-name">PUBPOL 402 / ECON 308 — Empirical Methods for Social Progress</span>
+      <span>
+        <span class="course-role">Co-Instructor</span>
+        <span class="course-info"> · Prof Lisa Gennetian · Spring 2026</span>
+      </span>
+    </li>
+
+    <li class="course">
+      <span class="course-name">PUBPOL 810 — Microeconomics and Public Policy-Making</span>
+      <span>
+        <span class="course-role">TA</span>
+        <span class="course-info"> · Dr Matthew Johnson · Fall 2025</span>
+      </span>
+    </li>
+
+    <li class="course">
+      <span class="course-name">Math Camp — Economics &amp; Mathematics for Incoming MPP Students</span>
+      <span>
+        <span class="course-role">TA</span>
+        <span class="course-info"> · Fall 2025, 2026</span>
+      </span>
+    </li>
+
+    <li class="course">
+      <span class="course-name">PUBPOL 303 — Microeconomic Policy Tools</span>
+      <span>
+        <span class="course-role">Head TA</span>
+        <span class="course-info"> · Prof Lisa Gennetian · Spring 2024</span>
+      </span>
+    </li>
+
+  </ul>
+
+  <h2 class="sub">Teaching Statement</h2>
+
+  <div class="paper">
+
+    <div class="paper-title">
+      Preliminary Teaching Statement
     </div>
+
+    <div class="paper-meta">
+      Under construction as part of Duke's Certificate in College Teaching
+    </div>
+
+    <button class="abstract-toggle" onclick="toggleStatement(this)">
+      View preliminary draft ↓
+    </button>
+
+    <div class="abstract-body">
+
+      <p>
+        <strong>A2 — Teaching and Supporting Student Learning</strong>
+      </p>
+
+      <p style="margin-top: 0.8rem;">
+        My teaching has often involved quantitative courses in which students enter
+        with very different levels of prior preparation. In PUBPOL 810:
+        <em>Microeconomics and Public Policy-Making</em>, I led weekly sections for
+        MPP students ranging from those encountering economics for the first time
+        to those with substantial prior coursework. I learned that teaching the
+        same material in the same way did not necessarily give all students the
+        same opportunity to engage with it (<strong>V1, K1</strong>).
+      </p>
+
+      <p style="margin-top: 0.8rem;">
+        I therefore began each section with a short three-question quiz. When many
+        students missed a question, I reviewed the concept with the full class;
+        when only a few struggled, I offered to work through it at the end of
+        section so those students could receive additional support without slowing
+        the pace for everyone (<strong>V2, K2</strong>). I also found that students
+        new to economics often struggled less with the final answer than with
+        understanding the intermediate steps in a graph or mathematical problem.
+        Rather than relying heavily on prepared slides, I worked through these
+        problems live so students could see the reasoning develop step by step and
+        ask questions as we proceeded (<strong>A2, K2</strong>). These practices
+        also reflected my response to earlier student feedback that I sometimes
+        moved too quickly, particularly for students without previous economics
+        coursework (<strong>K3</strong>).
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
 
   </main>
 
@@ -472,6 +533,15 @@
       const isOpen = body.classList.toggle('open');
       btn.textContent = isOpen ? 'Abstract ↑' : 'Abstract ↓';
     }
+
+    function toggleStatement(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = body.classList.toggle('open');
+
+  btn.textContent = isOpen
+    ? 'Hide preliminary draft ↑'
+    : 'View preliminary draft ↓';
+}
   </script>
 
 </body>
